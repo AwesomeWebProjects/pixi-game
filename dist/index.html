@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="Daniel Barion">
+	<meta name="description" content="Lit-Element Progressive Web App">
+	<meta name="keywords" content="Lit-Element, PWA, JS, APP, WebComponents">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="assets/images/favicon.png" />
+
+	<link rel="icon" sizes="192x192" href="assets/images/white-logo.png">
+	<link rel="apple-touch-icon" href="assets/images/white-logo.png">
+
+	<link rel="manifest" href="./manifest.json">
+
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#FF6400">
+	<title>Lit Web Components</title>
+
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=optional" rel="stylesheet">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com/icon?family=Material+Icons" crossorigin>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<link rel="preconnect" href="https://unpkg.com/" crossorigin>
+	<script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
+	<link rel="stylesheet" href="/assets/css/nprogress.css">
+
+	<link rel="stylesheet" href="/assets/css/base.css">
+</head>
+<body>
+	<noscript>You need to enable JavaScript to run this app. Please enable JavaScript 😭</noscript>
+
+	<script>
+		// make the whole serviceworker process into a promise so later on we can
+		// listen to it and in case new content is available a toast will be shown
+		window.isUpdateAvailable = new Promise(function (resolve, reject) {
+			// lazy way of disabling service workers while developing
+			if ('serviceWorker' in navigator && ['localhost', '127'].indexOf(location.hostname) === -1) {
+				// register service worker file
+				navigator.serviceWorker.register('./service-worker.js')
+					.then(registration => {
+						registration.onupdatefound = () => {
+							const installingWorker = registration.installing;
+							installingWorker.onstatechange = () => {
+								switch (installingWorker.state) {
+									case 'installed':
+										if (navigator.serviceWorker.controller) {
+											// new update available
+											resolve(true);
+										} else {
+											// no update available
+											resolve(false);
+										}
+										break;
+								}
+							};
+						};
+					})
+					.catch(err => console.error('[SW ERROR]', err));
+			}
+		});
+	</script>
+
+	<web-app></web-app>
+
+	<script type="module" src="components.js"></script>
+</body>
+</html>

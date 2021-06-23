@@ -1,0 +1,17 @@
+{
+  "name": "AWP Pixi.js Game",
+  "short_name": "Game",
+  "description": "Web game built with pixi.js",
+  "scope": "/",
+  "start_url": "/",
+  "theme_color": "#FFFFFF",
+  "background_color": "#FFFFFF",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/assets/images/awp.jpg",
+      "sizes": "16x16 32x32 48x48 64x64 128x128",
+      "type": "image/jpg"
+    }
+  ]
+}

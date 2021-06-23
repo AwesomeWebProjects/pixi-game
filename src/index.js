@@ -1,0 +1,4 @@
+/**
+ * Game
+ */
+import './game'

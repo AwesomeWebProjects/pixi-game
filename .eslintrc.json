@@ -1,0 +1,65 @@
+{
+  "extends": [
+    "standard", "prettier", "plugin:prettier/recommended"
+  ],
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "Iugu": true
+  },
+  "parser": "babel-eslint",
+  "plugins": ["prettier"],
+  "settings": {
+    "import/resolver": {
+      "babel-module": {
+        "root": ["./src/"]
+      }
+    }
+  },
+  "rules": {
+    "operator-linebreak": [
+      2,
+      "after",
+      {
+        "overrides": {
+          "?": "before",
+          ":": "before"
+        }
+      }
+    ],
+    "object-curly-newline": 0,
+    "implicit-arrow-linebreak": 0,
+    "semi": ["error", "never"],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": true,
+        "avoidEscape": true
+      }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 100,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "import/no-unresolved": [
+      "error",
+      {
+        "commonjs": true,
+        "amd": true
+      }
+    ],
+    "prettier/prettier": "error"
+  }
+}
