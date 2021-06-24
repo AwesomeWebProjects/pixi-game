@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/48fe97f4-5ac0-46e4-a3d6-412e56e8100d/deploy-status)](https://app.netlify.com/sites/quirky-lichterman-53c324/deploys)
+
 ## Pixi.js Game
 
 ![Pixi.js Game](./assets/pixi-game.png)
