@@ -1,4 +1,4 @@
-import Game from './game'
+import Game from 'components/game'
 
 const initializeGame = async () => {
   if (typeof window !== 'undefined' && typeof document !== 'undefined') {
@@ -16,8 +16,9 @@ const initializeGame = async () => {
         game.initializeControls()
       })
 
-    // Todo: delete this line or add only in dev
-    window.game = game
+    if (process.env.NODE_ENV === 'development') {
+      window.game = game
+    }
   }
 }
 

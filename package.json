@@ -2,9 +2,9 @@
   "name": "game",
   "version": "0.0.1",
   "scripts": {
-    "start": "(mkdir build || rm -rf build && mkdir build || rd /s /q build && mkdir build) && node --max_old_space_size=2048 ./node_modules/rollup/dist/bin/rollup -c rollup.config.dev.js --watch",
-    "start-with-sw": "(mkdir build || rm -rf build && mkdir build || rd /s /q build && mkdir build) && (npm run generate-service-worker) &&  node --max_old_space_size=2048 ./node_modules/rollup/dist/bin/rollup -c rollup.config.dev.js --watch",
-    "build": "(mkdir build || rm -rf build && mkdir build || rd /s /q build && mkdir build) && node --max_old_space_size=2048 ./node_modules/rollup/dist/bin/rollup -c rollup.config.prod.js",
+    "start": "(mkdir \"build\" || rm -rf \"build\" && mkdir \"build\" || rd /s /q \"build\" && mkdir \"build\") && node --max_old_space_size=2048 ./node_modules/rollup/dist/bin/rollup -c rollup.config.dev.js --watch",
+    "start-with-sw": "(mkdir \"build\" || rm -rf \"build\" && mkdir \"build\" || rd /s /q \"build\" && mkdir \"build\") && (npm run generate-service-worker) &&  node --max_old_space_size=2048 ./node_modules/rollup/dist/bin/rollup -c rollup.config.dev.js --watch",
+    "build": "(mkdir \"build\" || rm -rf \"build\" && mkdir \"build\" || rd /s /q \"build\" && mkdir \"build\") && node --max_old_space_size=2048 ./node_modules/rollup/dist/bin/rollup -c rollup.config.prod.js",
     "build:netlify": "node --max_old_space_size=2048 ./node_modules/rollup/dist/bin/rollup -c rollup.config.netlify.prod.js",
     "generate-service-worker": "node scripts/generate-service-worker.js",
     "eslint": "eslint --ext=js --ext=jsx --fix ./src",
@@ -62,6 +62,8 @@
   "dependencies": {
     "@pixi/loaders": "^6.0.2",
     "@pixi/tilemap": "^3.1.0",
+    "i18next": "^20.2.1",
+    "redux": "^4.0.5",
     "pixi.js": "^6.0.2"
   },
   "browserslist": {
